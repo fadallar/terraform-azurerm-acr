@@ -84,7 +84,7 @@ resource "azurerm_private_endpoint" "registrypep" {
   tags = merge(local.default_tags, var.extra_tags)
   private_dns_zone_group {
     name                 = "container-registry-group"
-    private_dns_zone_ids = var.private_dns_zone_ids
+    private_dns_zone_ids = [var.private_dns_zone_ids]
   }
 
   private_service_connection {
