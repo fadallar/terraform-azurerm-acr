@@ -27,19 +27,19 @@ variable "client_name" {
   description = "Client name/account used in naming."
   type        = string
 }
-
-variable "sku" {
-  description = "The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`."
-  type        = string
-  default     = "Standard"
-}
-
-variable "admin_enabled" {
-  description = "Whether the admin user is enabled."
-  type        = bool
-  default     = false
-}
-
+# Commented out as we do not expose these variables
+#variable "sku" {
+#  description = "The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`."
+#  type        = string
+#  default     = "Standard"
+#}
+#
+#variable "admin_enabled" {
+#  description = "Whether the admin user is enabled."
+#  type        = bool
+#  default     = false
+#}
+#
 variable "georeplication_locations" {
   description = <<DESC
   A list of Azure locations where the Ccontainer Registry should be geo-replicated. Only activated on Premium SKU.
@@ -106,7 +106,8 @@ variable "private_dns_zone_ids" {
   description = "Id of the private DNS Zone  to be used by the container registry private endpoint"
   type        = string
 }
-var "subnet_id" {
+
+variable "subnet_id" {
   description = "Id for the subnet used by the container registry private endpoint"
   type        = string
 }
