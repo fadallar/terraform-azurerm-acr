@@ -28,11 +28,11 @@ variable "client_name" {
   type        = string
 }
 # Commented out as we do not expose these variables
-#variable "sku" {
-#  description = "The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`."
-#  type        = string
-#  default     = "Standard"
-#}
+variable "sku" {
+  description = "The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`."
+  type        = string
+  default     = "Premium"
+}
 #
 #variable "admin_enabled" {
 #  description = "Whether the admin user is enabled."
