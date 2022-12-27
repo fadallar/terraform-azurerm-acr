@@ -77,7 +77,7 @@ resource "azurerm_container_registry" "registry" {
   }
 }
 resource "azurerm_private_endpoint" "registrypep" {
-  name                = format("pe-%s", var.local.acr_name)
+  name                = format("pe-%s", local.acr_name)
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id
