@@ -3,16 +3,13 @@ resource "azurerm_container_registry" "registry" {
   location            = var.location
   resource_group_name = var.resource_group_name
   # We enforce usage of the premium SKU which supports private endpoint
-  sku = "Premium"
-  #sku                 = var.sku
+  sku                 = var.sku
   # Our practice is to disable admin access on our ACR
   admin_enabled = false
   #admin_enabled       = var.admin_enabled
   # Our practice is to not allow public network access for our ACR
-  public_network_access_enabled = false
-  #public_network_access_enabled = var.public_network_access_enabled
+  public_network_access_enabled = var.public_network_access_enabled
   network_rule_bypass_option    = var.azure_services_bypass_allowed ? "AzureServices" : "None"
-
   data_endpoint_enabled = var.data_endpoint_enabled
 
   dynamic "retention_policy" {
