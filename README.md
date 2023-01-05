@@ -4,7 +4,7 @@
 This Terraform module creates an [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/).
 
 <!-- BEGIN_TF_DOCS -->
-## Global versioning rule for Claranet Azure modules
+## Global versioning rule for Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
@@ -15,14 +15,14 @@ This Terraform module creates an [Azure Container Registry](https://docs.microso
 
 ```hcl
 module "azure_region" {
-  source  = "claranet/regions/azurerm"
+  source  = "app.terraform.io/dallaraCorp/regions/azurerm"
   version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
-  source  = "claranet/rg/azurerm"
+  source  = "app.terraform.io/dallaraCorp/rg/azurerm"
   version = "x.x.x"
 
   location    = module.azure_region.location
@@ -31,8 +31,8 @@ module "rg" {
   stack       = var.stack
 }
 
-module "logs" {
-  source  = "claranet/run-common/azurerm//modules/logs"
+<!---module "logs" {
+  source  = ""
   version = "x.x.x"
 
   client_name         = var.client_name
@@ -41,10 +41,10 @@ module "logs" {
   location            = module.azure_region.location
   location_short      = module.azure_region.location_short
   resource_group_name = module.rg.resource_group_name
-}
+}--->
 
 module "acr" {
-  source  = "claranet/acr/azurerm"
+  source  = "app.terraform.io/dallaraCorp/acr/azurerm"
   version = "x.x.x"
 
   client_name         = var.client_name
@@ -53,15 +53,15 @@ module "acr" {
   location            = module.azure_region.location
   location_short      = module.azure_region.location_short
   resource_group_name = module.rg.resource_group_name
-  sku                 = "Standard"
 
   logs_destinations_ids = [
-    module.logs.logs_storage_account_id,
-    module.logs.log_analytics_workspace_id
+    <storage_account_id>,
+    <log_analytics_workspace_id>
   ]
 
   extra_tags = {
-    foo = "bar"
+    datalabel = "Low",
+    cialabel = "C2I3A1"
   }
 }
 ```
@@ -90,10 +90,10 @@ module "acr" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| admin\_enabled | Whether the admin user is enabled. | `bool` | `false` | no |
+<!---| admin\_enabled | Whether the admin user is enabled. | `bool` | `false` | no |--->
 | allowed\_cidrs | List of CIDRs to allow on the registry. | `list(string)` | `[]` | no |
 | allowed\_subnets | List of VNet/Subnet IDs to allow on the registry. | `list(string)` | `[]` | no |
-| azure\_services\_bypass\_allowed | Whether to allow trusted Azure services to access a network restricted Container Registry. | `bool` | `false` | no |
+| azure\_services\_bypass\_allowed | Whether to allow trusted Azure services to access a network restricted Container Registry. | `bool` | `true` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_name | Custom Azure Container Registry name, generated if not set | `string` | `""` | no |
@@ -112,9 +112,9 @@ module "acr" {
 | logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
-| public\_network\_access\_enabled | Whether the Container Registry is accessible publicly. | `bool` | `true` | no |
+| public\_network\_access\_enabled | Whether the Container Registry is accessible publicly. | `bool` | `false` | no |
 | resource\_group\_name | Name of the resource group. | `string` | n/a | yes |
-| sku | The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`. | `string` | `"Standard"` | no |
+| sku | The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`. | `string` | `"Premium"` | no |
 | stack | Project stack name. | `string` | n/a | yes |
 | trust\_policy\_enabled | Specifies whether the trust policy is enabled (Premium only). | `bool` | `false` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |

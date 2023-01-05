@@ -29,11 +29,11 @@ variable "client_name" {
 }
 # Commented out as we do not expose these variables
 variable "sku" {
-  description = "The SKU name of the the container registry. Possible values are `Classic` (which was previously `Basic`), `Basic`, `Standard` and `Premium`."
+  description = "The SKU name of the the container registry. Possible values are `Basic`, `Standard` and `Premium`."
   type        = string
   default     = "Premium"
 }
-#
+# We do not expose that variable 
 #variable "admin_enabled" {
 #  description = "Whether the admin user is enabled."
 #  type        = bool
@@ -69,7 +69,7 @@ variable "images_retention_days" {
 variable "azure_services_bypass_allowed" {
   description = "Whether to allow trusted Azure services to access a network restricted Container Registry."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "trust_policy_enabled" {
@@ -93,7 +93,7 @@ variable "allowed_subnets" {
 variable "public_network_access_enabled" {
   description = "Whether the Container Registry is accessible publicly."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "data_endpoint_enabled" {
