@@ -31,18 +31,6 @@ module "rg" {
   stack       = var.stack
 }
 
-<!---module "logs" {
-  source  = ""
-  version = "x.x.x"
-
-  client_name         = var.client_name
-  environment         = var.environment
-  stack               = var.stack
-  location            = module.azure_region.location
-  location_short      = module.azure_region.location_short
-  resource_group_name = module.rg.resource_group_name
-}--->
-
 module "acr" {
   source  = "app.terraform.io/dallaraCorp/acr/azurerm"
   version = "x.x.x"
@@ -77,7 +65,7 @@ module "acr" {
 
 | Name | Source | Version |
 |------|--------|---------|
-<!---| diagnostics | claranet/diagnostic-settings/azurerm | 6.2.0 |--->
+| diagnostics | app.terraform.io/dallaraCorp/diagnostics-settings/azurerm | 0.1.0 |
 
 ## Resources
 
