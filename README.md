@@ -90,7 +90,6 @@ module "acr" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-<!---| admin\_enabled | Whether the admin user is enabled. | `bool` | `false` | no |--->
 | allowed\_cidrs | List of CIDRs to allow on the registry. | `list(string)` | `[]` | no |
 | allowed\_subnets | List of VNet/Subnet IDs to allow on the registry. | `list(string)` | `[]` | no |
 | azure\_services\_bypass\_allowed | Whether to allow trusted Azure services to access a network restricted Container Registry. | `bool` | `true` | no |
