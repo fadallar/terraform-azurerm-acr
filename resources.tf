@@ -9,6 +9,7 @@ resource "azurerm_container_registry" "registry" {
   public_network_access_enabled = var.public_network_access_enabled
   network_rule_bypass_option    = var.azure_services_bypass_allowed ? "AzureServices" : "None"
   data_endpoint_enabled = var.data_endpoint_enabled
+  anonymous_pull_enabled = false
 
   dynamic "retention_policy" {
     for_each = var.images_retention_enabled && var.sku == "Premium" ? ["enabled"] : []
