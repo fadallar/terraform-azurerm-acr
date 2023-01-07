@@ -1,6 +1,6 @@
 module "diagnostics" {
   source  = "app.terraform.io/dallaraCorp/diagnostics-settings/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
   resource_id = azurerm_container_registry.registry.id
 
   logs_destinations_ids = var.logs_destinations_ids
