@@ -63,7 +63,7 @@ resource "azurerm_container_registry" "registry" {
     }
   }
 
-  tags = merge(local.default_tags, var.extra_tags)
+  tags = merge(var.default_tags, var.extra_tags)
 
   lifecycle {
     precondition {
@@ -77,7 +77,7 @@ resource "azurerm_private_endpoint" "registrypep" {
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id
-  tags = merge(local.default_tags, var.extra_tags)
+  tags = merge(var.default_tags, var.extra_tags)
   private_dns_zone_group {
     name                 = "container-registry-group"
     private_dns_zone_ids = [var.private_dns_zone_ids]
