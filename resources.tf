@@ -11,6 +11,7 @@ resource "azurerm_container_registry" "registry" {
   data_endpoint_enabled = var.data_endpoint_enabled
   anonymous_pull_enabled = false
   quarantine_policy_enabled = var.quarantine_policy_enabled
+  zone_redundancy_enabled = var.zone_redundancy_enabled
 
   dynamic "retention_policy" {
     for_each = var.images_retention_enabled && var.sku == "Premium" ? ["enabled"] : []
