@@ -111,3 +111,9 @@ variable "subnet_id" {
   description = "Id for the subnet used by the container registry private endpoint"
   type        = string
 }
+
+variable "quarantine_policy_enabled" {
+  description = "Boolean value that indicates whether quarantine policy is enabled"
+  type = bool
+  default =false
+}

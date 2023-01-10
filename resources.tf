@@ -10,6 +10,7 @@ resource "azurerm_container_registry" "registry" {
   network_rule_bypass_option    = var.azure_services_bypass_allowed ? "AzureServices" : "None"
   data_endpoint_enabled = var.data_endpoint_enabled
   anonymous_pull_enabled = false
+  quarantine_policy_enabled = var.quarantine_policy_enabled
 
   dynamic "retention_policy" {
     for_each = var.images_retention_enabled && var.sku == "Premium" ? ["enabled"] : []
