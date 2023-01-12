@@ -1,5 +1,5 @@
 module "diagnostics" {
-  source  = "app.terraform.io/dallaraCorp/diagnostics-settings/azurerm"
+  source  = "app.terraform.io/fabbuildingblocks/diagnostics-settings/azurerm"
   version = "0.1.1"
   resource_id = azurerm_container_registry.registry.id
 
