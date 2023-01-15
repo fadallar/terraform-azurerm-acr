@@ -23,11 +23,6 @@ variable "stack" {
   type        = string
 }
 
-variable "client_name" {
-  description = "Client name/account used in naming."
-  type        = string
-}
-# Commented out as we do not expose these variables
 variable "sku" {
   description = "The SKU name of the the container registry. Possible values are `Basic`, `Standard` and `Premium`."
   type        = string
@@ -100,6 +95,11 @@ variable "data_endpoint_enabled" {
   description = "Whether to enable dedicated data endpoints for this Container Registry? (Only supported on resources with the Premium SKU)."
   default     = false
   type        = bool
+}
+variable "enable_private_endpoint" {
+  description = "Static Site Private DNS Zone id. Required if private endpoint is enabled"
+  type        = bool
+  default     = true
 }
 
 variable "private_dns_zone_ids" {

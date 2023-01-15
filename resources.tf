@@ -1,5 +1,5 @@
 resource "azurerm_container_registry" "registry" {
-  name = local.acr_name
+  name = local.name
   location            = var.location
   resource_group_name = var.resource_group_name
   sku                 = var.sku

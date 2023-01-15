@@ -17,15 +17,3 @@ output "acr_fqdn" {
   description = "The Container Registry FQDN."
   value       = azurerm_container_registry.registry.login_server
 }
-# Disabling the admin user related output as we disable that configuration in our template
-#output "admin_username" {
-#  description = "The Username associated with the Container Registry Admin account - if the admin account is enabled."
-#  value       = azurerm_container_registry.registry.admin_username
-#}
-#
-#output "admin_password" {
-#  description = "The Password associated with the Container Registry Admin account - if the admin account is enabled."
-#  value       = azurerm_container_registry.registry.admin_password
-#  sensitive   = true
-#}
-#
