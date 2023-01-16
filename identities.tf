@@ -2,7 +2,7 @@
 resource "azurerm_user_assigned_identity" "acr_pull" {
   location            = var.location
   name                = format("id-acrpull-%s",azurerm_container_registry.registry.name)
-  resource_group_name = var.resource_group_name.default_tags
+  resource_group_name = var.resource_group_name
   tags = var.default_tags
 }
 
@@ -17,7 +17,7 @@ resource "azurerm_role_assignment" "rbac_acr_pull" {
 resource "azurerm_user_assigned_identity" "acr_push" {
   location            = var.location
   name                = format("id-acrpush-%s",azurerm_container_registry.registry.name)
-  resource_group_name = var.resource_group_name.default_tags
+  resource_group_name = var.resource_group_name
   tags = var.default_tags
 }
 
