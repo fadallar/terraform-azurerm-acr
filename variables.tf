@@ -75,12 +75,12 @@ variable "trust_policy_enabled" {
 
 variable "quarantine_policy_enabled" {
   description = "Boolean value that indicates whether quarantine policy is enabled. Only available with premium SKU"
-  type = bool
-  default =false
+  type        = bool
+  default     = false
 }
 
 variable "zone_redundancy_enabled" {
-    description = "Boolean value that indicates whether acr zoe redundancy is enabled. Only available with premium SKU"
-    type = bool
-    default = false
+  description = "Boolean value that indicates whether acr zoe redundancy is enabled. Only available with premium SKU"
+  type        = bool
+  default     = false
 }
