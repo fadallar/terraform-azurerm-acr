@@ -1,7 +1,7 @@
 # Generic naming variables
 
 variable "custom_name" {
-  description = "Custom Azure Key Vault Name, it will overide the generate name if set"
+  description = "Custom resource name, it will overide the generated name if set"
   type        = string
   default     = ""
 }
