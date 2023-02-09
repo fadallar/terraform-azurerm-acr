@@ -47,6 +47,7 @@ module "ressource" {
     environment = var.environment
     stack       = var.stack
     landing_zone_slug = var.landing_zone_slug
+    default_tags      = module.base-tagging.base_tags
     location    = module.regions_master.location
     location_short  = module.regions_master.location_short
 }
