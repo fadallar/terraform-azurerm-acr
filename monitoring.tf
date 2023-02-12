@@ -5,7 +5,7 @@ data "azurerm_monitor_diagnostic_categories" "diagcategories" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostics" {
-  name                       = "default-Diagnostics-Logs"
+  name                       = var.monitor_default_diagnostic_setting_name
   target_resource_id         = azurerm_container_registry.registry.id
   log_analytics_workspace_id = var.diag_log_analytics_workspace_id
 
