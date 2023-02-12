@@ -9,7 +9,7 @@ resource "azurerm_user_assigned_identity" "acr_pull" {
 resource "azurerm_role_assignment" "rbac_acr_pull" {
   scope                = azurerm_container_registry.registry.id
   role_definition_name = "AcrPull"
-  principal_id         = azurerm_user_assigned_identity.acr_pull.id
+  principal_id         = azurerm_user_assigned_identity.acr_pull.principal_id
 }
 
 // ACR PUSH
@@ -24,5 +24,5 @@ resource "azurerm_user_assigned_identity" "acr_push" {
 resource "azurerm_role_assignment" "rbac_acr_push" {
   scope                = azurerm_container_registry.registry.id
   role_definition_name = "AcrPush"
-  principal_id         = azurerm_user_assigned_identity.acr_push.id
+  principal_id         = azurerm_user_assigned_identity.acr_push.principal_id
 }
