@@ -36,3 +36,9 @@ variable "diag_log_analytics_workspace_id" {
   type        = string
   description = " Log Analytics Workspace Id for logs and metrics diagnostics destination"
 }
+
+variable "monitor_default_diagnostic_setting_name" {
+  type = string
+  description = "Name of the default diagnostic setting used by all resources"
+  default = "default-diag-settings"
+}

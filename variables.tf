@@ -28,13 +28,7 @@ variable "sku" {
   type        = string
   default     = "Premium"
 }
-# We do not expose that variable 
-#variable "admin_enabled" {
-#  description = "Whether the admin user is enabled."
-#  type        = bool
-#  default     = false
-#}
-#
+
 variable "georeplication_locations" {
   description = <<DESC
   A list of Azure locations where the Ccontainer Registry should be geo-replicated. Only activated on Premium SKU.
@@ -80,7 +74,7 @@ variable "quarantine_policy_enabled" {
 }
 
 variable "zone_redundancy_enabled" {
-  description = "Boolean value that indicates whether acr zoe redundancy is enabled. Only available with premium SKU"
+  description = "Boolean value that indicates whether acr zone redundancy is enabled. Only available with premium SKU"
   type        = bool
   default     = false
 }
