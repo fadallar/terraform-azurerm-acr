@@ -1,11 +1,13 @@
 # Basic Azure Container Registry
 
-This is an example for setting-up a an Azure Container registry
- This examples creates
+This is an example for setting-up a an Azure Container Registry
+
+This examples creates
   - Sets the different Azure Region representation ( location, location_short, location_cli ...) --> module "regions_master"
   - Instanciates a map object with the common Tags ot be applied to all resources --> module "base_tagging"
   - A resource-group --> module "ressource" 
   - Creates an Azure Container Registry with a secure configuration baseline
+  - Creates a private endpoint for the Azure Container Registry
   - Set the default diagnostics settings (All Logs and metric) whith a Log Analytics workspace as destination 
   - Creates two user managed identies, ACRPull and ACR Push, scoped at the ACR
   - Assign built-in ACR Roles: AcrPull AcrPush to the respective Roles
@@ -15,7 +17,7 @@ This is an example for setting-up a an Azure Container registry
 
 
   The template does not create the subnet and private DNZ zone for the private endpoint  
-  The template does not create the log analytics workspace  
+  The template does not create the log analytics workspace    
 
 ## Main.tf file content
   Please replace the modules source and version with your relevant information  
@@ -67,6 +69,6 @@ module "acr" {
   // Private Endpoint Configuration info
 
   private_dns_zone_ids          = ""    ### Private DNS zone resource id for the ACR private link
-  subnet_id                     = ""    ### Resource id of the subnet used by the private endpoint
+  subnet_id                     = ""    ### Resource id of the subnet used by the ACR private endpoint
 }
 ```
