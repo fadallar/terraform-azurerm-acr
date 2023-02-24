@@ -35,3 +35,9 @@ variable "diag_retention_days" {
   type = number
   default = 30
 }
+
+variable "log_analytics_destination_type" {
+  description = "Possible values are AzureDiagnostics and Dedicated. Recommended value is Dedicated"
+  type = string
+  default = "Dedicated"
+}
