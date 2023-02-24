@@ -1,4 +1,4 @@
-variable "diagnostic_settings_name" {  
+variable "diag_default_setting_name" {  
   description = "Name of the diagnostics settings, name will be 'default' if not set."  
   type        = string  
   default     = "default"
