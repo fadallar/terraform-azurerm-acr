@@ -8,6 +8,11 @@ output "acr_name" {
   value       = azurerm_container_registry.registry.name
 }
 
+output "acr_loging_server" {
+  description = "The URL that can be used to log into the container registry"
+  value = azurerm_container_registry.registry.login_user
+}
+
 output "id_acr_pull" {
   description = "Id to the user-managed identity with ACrPull Role"
   value       = azurerm_user_assigned_identity.acr_pull.id

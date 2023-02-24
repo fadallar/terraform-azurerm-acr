@@ -40,7 +40,7 @@ variable "georeplication_locations" {
   or this can be a list of `string` (each element is a location)
 DESC
   type        = any
-  default     = []
+  default     = null
 }
 
 variable "images_retention_enabled" {
