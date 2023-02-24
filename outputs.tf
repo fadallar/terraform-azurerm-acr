@@ -10,7 +10,7 @@ output "acr_name" {
 
 output "acr_login_server" {
   description = "The URL that can be used to log into the container registry"
-  value = azurerm_container_registry.registry.login_server
+  value       = azurerm_container_registry.registry.login_server
 }
 
 output "id_acr_pull" {
