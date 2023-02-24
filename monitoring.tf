@@ -11,7 +11,6 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics" {
     for_each = var.diag_metric_categories
     content {
       category = metric.value
-      enabled  = true
       retention_policy {
         days    = var.diag_retention_days
         enabled = true
@@ -23,7 +22,6 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics" {
     for_each = var.diag_log_categories
     content {
       category = enabled_log.value
-      enabled  = true
       retention_policy {
         days    = var.diag_retention_days
         enabled = true
