@@ -1,4 +1,3 @@
-// Please check issue https://github.com/hashicorp/terraform-provider-azurerm/issues/17172
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostics" {
   name                           = var.diag_default_setting_name
