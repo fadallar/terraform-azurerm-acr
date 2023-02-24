@@ -1,7 +1,7 @@
 // Please check issue https://github.com/hashicorp/terraform-provider-azurerm/issues/17172
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostics" {
-  name                       = var.diag_default_diagnostic_setting_name
+  name                       = var.diag_default_setting_name
   target_resource_id         = azurerm_container_registry.registry.id
   log_analytics_destination_type = var.log_analytics_destination_type
   log_analytics_workspace_id = var.diag_log_analytics_workspace_id
