@@ -31,7 +31,7 @@ resource "azurerm_container_registry" "registry" {
   }
 
   dynamic "georeplications" {
-    for_each = var.georeplication_locations != null && var.sku == "Premium" ? var.georeplication_locations : []
+    for_each = var.georeplication_locations != null && var.sku == "Premium" ? var.georeplication_locations : {}
 
     content {
       location                  = try(georeplications.value.location, georeplications.value)
