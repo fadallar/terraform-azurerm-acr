@@ -47,8 +47,13 @@ variable "georeplication_locations" {
     tags                      = map(string)
   or this can be a list of `string` (each element is a location)
 DESC
-  type        = list(map)
-  default     = null
+  type = list(object({
+    location                  = string
+    zone_redundancy_enabled   = bool
+    regional_endpoint_enabled = bool
+    tags                      = map(string)
+  }))
+  default = null
 }
 
 variable "images_retention_enabled" {
