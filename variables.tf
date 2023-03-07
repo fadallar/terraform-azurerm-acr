@@ -32,7 +32,7 @@ variable "sku" {
   type        = string
   default     = "Premium"
   validation {
-    condition     = contains(["Basic", "Standard","Premium"], var.sku)
+    condition     = contains(["Basic", "Standard", "Premium"], var.sku)
     error_message = "Invalid variable: ${var.sku}. SKU used is not valid"
   }
 }
@@ -47,7 +47,7 @@ variable "georeplication_locations" {
     tags                      = map(string)
   or this can be a list of `string` (each element is a location)
 DESC
-  type        = any
+  type        = list(map(string))
   default     = null
 }
 

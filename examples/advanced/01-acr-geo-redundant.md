@@ -70,7 +70,7 @@ module "resource_secondary" {
 
 
 module "acr" {
-  source  = "app.terraform.io/<ORGANIZATION>/regions-master/azurem"
+  source  = "app.terraform.io/<ORGANIZATION>/regions-master/azurerm"
   version = "x.y.z"
   landing_zone_slug = var.landing_zone_slug
   environment = var.environment
@@ -92,7 +92,7 @@ module "acr" {
   
   // Private Endpoint Configuration info
 
-  private_dns_zone_ids          = ""    ### Private DNS zone resource id for the ACR private link
+  private_dns_zone_id          = ""    ### Private DNS zone resource id for the ACR private link
   private_endpoint_subnet_id    = ""    ### Resource id of the subnet used by the ACR private endpoint
 
 }
