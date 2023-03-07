@@ -39,7 +39,7 @@ variable "sku" {
 
 variable "georeplication_locations" {
   description = <<DESC
-  A list of Azure locations where the Ccontainer Registry should be geo-replicated. Only activated on Premium SKU.
+  A list of Azure locations where the container Registry should be geo-replicated. Only activated on Premium SKU.
   Supported properties are:
     location                  = string
     zone_redundancy_enabled   = bool
@@ -47,8 +47,17 @@ variable "georeplication_locations" {
     tags                      = map(string)
   or this can be a list of `string` (each element is a location)
 DESC
-  type        = list(map(string))
-  default     = null
+  type = list(map(object(
+    {
+      location                  = string
+      zone_redundancy_enabled   = optional(bool)
+      regional_endpoint_enabled = optional(bool)
+      tags                      = optional(map(string))
+    }
+    )
+    )
+  )
+  default = null
 }
 
 variable "images_retention_enabled" {
