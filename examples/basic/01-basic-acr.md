@@ -69,6 +69,6 @@ module "acr" {
   // Private Endpoint Configuration info
 
   private_dns_zone_ids          = ""    ### Private DNS zone resource id for the ACR private link
-  subnet_id                     = ""    ### Resource id of the subnet used by the ACR private endpoint
+  private_endpoint_subnet_id    = ""    ### Resource id of the subnet used by the ACR private endpoint
 }
 ```

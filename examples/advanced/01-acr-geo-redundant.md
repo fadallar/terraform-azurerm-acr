@@ -34,12 +34,6 @@ module "regions_master" {
   azure_region = var.location # example eu-west
 }
 
-module "regions_secondary" {
-  source  = "app.terraform.io/<ORGANIZATION>/regions-master/azurem"
-  version = "x.y.z"
-  azure_region = var.location_secondary # example eu-north
-}
-
 module "base_tagging" {
   source  = "app.terraform.io/<ORGANIZATION>/base-tagging/azurerm"
   version = "x.y.z"
@@ -99,7 +93,7 @@ module "acr" {
   // Private Endpoint Configuration info
 
   private_dns_zone_ids          = ""    ### Private DNS zone resource id for the ACR private link
-  subnet_id                     = ""    ### Resource id of the subnet used by the ACR private endpoint
-  secondary_subnet_id           = ""    ### Resource id of the subnet used by the ACR private endpoint in the secondary region
+  private_endpoint_subnet_id    = ""    ### Resource id of the subnet used by the ACR private endpoint
+
 }
 ```

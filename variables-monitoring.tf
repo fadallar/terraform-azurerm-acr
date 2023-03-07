@@ -2,6 +2,10 @@ variable "diag_default_setting_name" {
   description = "Name of the diagnostics settings, name will be 'default' if not set."
   type        = string
   default     = "default"
+  validation {
+    condition     = can(regex("^[a-z]([a-z0-9-]*[a-z0-9])?$", var.diag_default_setting_name))
+    error_message = "Invalid variable: ${var.diag_default_setting_name}. Variable name must start with a lowercase letter, end with an alphanumeric lowercase character, and contain only lowercase letters, digits, or a dash (-)."
+  }
 }
 
 variable "diag_log_analytics_workspace_id" {
