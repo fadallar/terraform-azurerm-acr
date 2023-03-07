@@ -9,14 +9,15 @@ This examples creates
   - Creates a Premium Azure Container Registry with a secure configuration baseline
   - Enable ACR Zone redundancy
   - Creates a Geo_redundant ACR in a second region
-  - Creates private endpoints for the Azure Container Registry in the primary and secondary regions
+  - Creates private endpoints for the Azure Container Registry in the primary region
   - Set the default diagnostics settings (All Logs and metric) whith a Log Analytics workspace as destination 
   - Creates two user managed identies, ACRPull and ACR Push, scoped at the ACR
   - Assign built-in ACR Roles: AcrPull AcrPush to the respective Roles
 
 > IMPORTANT  
 > Ensure your account used for deploying the terraform has sufficient rights to assign roles to identities  
-> 
+> The georeplications list cannot contain the location where the Container Registry exists.
+> If more than one georeplications block is specified, they are expected to follow the alphabetic order on the location property.
 
   The template does not create the subnets for the primary and secondary regions
   The template does not create the private DNZ zone for the private endpoints  
@@ -70,30 +71,34 @@ module "resource_secondary" {
 
 
 module "acr" {
-  source  = "app.terraform.io/<ORGANIZATION>/regions-master/azurerm"
-  version = "x.y.z"
-  landing_zone_slug = var.landing_zone_slug
-  environment = var.environment
-  stack       = var.stack
-  default_tags                  = module.base-tagging.base_tags
-  location                      = module.regions_master.location
-  location_short                = module.regions_master.location_short
-  resource_group_name           = module.rg.resource_group_name
-  
-  diag_log_analytics_workspace_id = ""    #### Log Analytics Workspace Resource Id
-  zone_redundancy_enabled       = true
+  source              = "app.terraform.io/<ORGANIZATION>/rg/azurerm"
+  version             = "x.y.z"
+  landing_zone_slug   = var.landing_zone_slug
+  environment         = var.environment
+  stack               = var.stack
+  default_tags        = module.base-tagging.base_tags
+  location            = module.regions_master.location
+  location_short      = module.regions_master.location_short
+  resource_group_name = module.rg.resource_group_name
 
-  georeplication_locations = {
-     location =  module.regions_secondary.location
-     zone_redundancy_enabled = true 
-     regional_endpoint_enabled = true 
-     tags = module.base-tagging.base_tags
-  }
-  
+  diag_log_analytics_workspace_id = var.diag_log_analytics_workspace_id
+  zone_redundancy_enabled         = true
+
+  georeplication_locations = [
+    {
+      location                  = module.regions_secondary.location
+      zone_redundancy_enabled   = true
+      regional_endpoint_enabled = true
+      tags = {
+        Project = "MyProject"
+      }
+    }
+  ]
+
   // Private Endpoint Configuration info
 
-  private_dns_zone_id          = ""    ### Private DNS zone resource id for the ACR private link
-  private_endpoint_subnet_id    = ""    ### Resource id of the subnet used by the ACR private endpoint
+  private_dns_zone_id        = "" ### Private DNS Zone Id
+  private_endpoint_subnet_id = "" ### Private Endpoint Subnet Id
 
 }
 ```
